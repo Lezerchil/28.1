@@ -39,7 +39,7 @@ def test_by_number_bad():
     pytest.driver.find_element(By.ID, 'password').clear()
     pytest.driver.find_element(By.ID, 'password').send_keys(bad_password_telnum)
     pytest.driver.find_element(By.CSS_SELECTOR, 'button[type="submit"]').click()
-    assert WebDriverWait(pytest.driver, 10).until(ec.presence_of_element_located(By.CLASS_NAME, "rt-link rt-link--orange rt-link--muted login-form__forgot-pwd login-form__forgot-pwd--muted"))
+    assert expected_class == WebDriverWait(pytest.driver, 10).until(ec.presence_of_element_located((By.CLASS_NAME, expected_class)))
 
 
 def test_by_email():
@@ -80,7 +80,7 @@ def test_by_login_bad():
     pytest.driver.find_element(By.ID, 'password').clear()
     pytest.driver.find_element(By.ID, 'password').send_keys(bad_password_login)
     pytest.driver.find_element(By.CSS_SELECTOR, 'button[type="submit"]').click()
-    assert expected_class == WebDriverWait(pytest.driver, 10).until(ec.presence_of_element_located(By.CLASS_NAME, expected_class))
+    assert expected_class == WebDriverWait(pytest.driver, 10).until(ec.presence_of_element_located((By.CLASS_NAME, expected_class)))
 
 def test_by_ls():
     WebDriverWait(pytest.driver, 10).until(ec.presence_of_element_located((By.ID, "t-btn-tab-ls"))).click()
@@ -100,7 +100,6 @@ def test_by_ls_bad():
     pytest.driver.find_element(By.ID, 'password').clear()
     pytest.driver.find_element(By.ID, 'password').send_keys(bad_password_ls)
     pytest.driver.find_element(By.CSS_SELECTOR, 'button[type="submit"]').click()
-    assert expected_class == WebDriverWait(pytest.driver, 10).until(ec.presence_of_element_located(By.CLASS_NAME, expected_class))
-
+    assert expected_class == WebDriverWait(pytest.driver, 10).until(ec.presence_of_element_located((By.CLASS_NAME, expected_class)))
 #Авторизация по временному коду (Где она?)
 
